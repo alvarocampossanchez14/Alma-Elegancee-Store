@@ -4,7 +4,7 @@ import logo from '../assets/Logo_Letras.png';
 const Header = () => {
     return (
         <header>
-            <div className='w-100  flex flex-col justify-center items-center pr-20 pl-20'>
+            <div className='w-100 font-semibold flex flex-col justify-center items-center pr-20 pl-20'>
                 <img src={logo} alt="Logo" className='size-30'/>
                     <nav>
                         <ul className='flex flex-row'>
