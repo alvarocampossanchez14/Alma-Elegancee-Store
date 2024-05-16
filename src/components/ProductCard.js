@@ -1,6 +1,6 @@
 import React from "react";
 import Productimg from "../assets/product_1.webp";
-import { PiShoppingBagFill } from "react-icons/pi";
+import { IoBagSharp } from "react-icons/io5";
 
 
 
@@ -19,8 +19,8 @@ const ProductCard = ({addToCart}) => {
                     <p>(Product Description)</p>
                     <p>($ 0.00)</p>
                 </div>
-                <button onClick={addToCart} className="hover:translate-y-[-5px]">
-                    <PiShoppingBagFill className="size-10"/>
+                <button onClick={addToCart} className="w-10 h-10 border-2 border-black rounded-full flex flex-row items-center justify-center  hover:translate-y-[-5px]">
+                        <IoBagSharp className="size-5"/>
                 </button>
             </div>
         </div>

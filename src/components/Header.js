@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import { FiShoppingCart } from "react-icons/fi";
 
-const Header = ({cartCount}) => {
+const Header = ({cartCount, toggleCart}) => {
     return (
         <header>
             <div className='w-100 font-semibold flex flex-col justify-center items-center pr-20 pl-20'>
@@ -18,8 +18,10 @@ const Header = ({cartCount}) => {
                         </ul>
                     </nav>
                     <div className='relative'>
-                        <span className='rounded-full bg-red-500 w-4 h-4 flex items-center justify-center absolute top-[-15px] left-3 text-white text-xs'>{cartCount}</span>
+                      <button onClick={toggleCart}>
+                        <span className='z-[-1] rounded-full bg-red-500 w-4 h-4 flex items-center justify-center absolute top-[-15px] left-3 text-white text-xs'>{cartCount}</span>
                         <FiShoppingCart className='size-5'/>
+                      </button>
                     </div>
                 </div>
             </div>
