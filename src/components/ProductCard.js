@@ -9,7 +9,7 @@ import { PiShoppingBagFill } from "react-icons/pi";
 const ProductCard = ({addToCart}) => {  
 
     return (
-        <div className="product-card bg-white border-l-black flex flex-col border-b-black border-2 p-5 m-auto w-80 rounded-md">
+        <div className="product-card bg-[#FAFAFA] border-l-black flex flex-col border-b-black border-2 p-5 m-auto w-80 rounded-md">
             <div className="product-card__image flex justify-center">
                 <img src={Productimg} alt="Product" className="rounded-md my-3" />
             </div>
