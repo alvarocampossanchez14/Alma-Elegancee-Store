@@ -1,20 +1,15 @@
 import React from "react";
 import ProductCard from "./ProductCard";   // Import the ProductCard component
 
-const Products = ({addToCart}) => {
-    return (
-        <section className="p-0 md:p-0 xl:p-20">
+const Products = ({addToCart, products}) => {
 
-            <div className="products grid grid-cols-1 sm:grid-cols-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-10">
-                <ProductCard addToCart={addToCart}/>
-                <ProductCard addToCart={addToCart}/>
-                <ProductCard addToCart={addToCart}/>
-                <ProductCard addToCart={addToCart}/>
-                <ProductCard addToCart={addToCart}/>
-                <ProductCard addToCart={addToCart}/>
-                <ProductCard addToCart={addToCart}/>
-                <ProductCard addToCart={addToCart}/>
-            </div>
+    return (
+        <section className="p-0 md:p-0 xl:p-20 my-10">
+            <ul className="grid xl:grid-cols-3 md:grid-cols-2 lg:grid-cols-2 grid-cols-1 gap-3">
+                {products.map((product) => (
+                    <ProductCard key={product.id} product={product} addToCart={addToCart}/>
+                ))}
+            </ul>
         </section>
     );
 };

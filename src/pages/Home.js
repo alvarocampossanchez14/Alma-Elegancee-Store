@@ -5,44 +5,53 @@ import Header from '../components/Header';
 import Footer  from '../components/Footer';
 
 import Products from '../components/Products';
-import Card from '../components/Cart';
+import Cart from '../components/Cart';
+import { Filters } from "../components/Filters";
+
+import {products as initialProducts} from "../mocks/ProductList"; // Import the products data
+import { CartProvider } from "../context/cart";
 
 const Home = () => {
-    const [showCart, setShowCart] = useState(false);
-    const [cartCount, setCartCount] = useState(0);
-    const [cartItems, setCartItems] = useState([]);
 
+
+
+    const [products] = useState(initialProducts);
+    const [filters, setFilters] = useState({
+        category: "all",
+        minPrice: 0,
+    });
+
+    const filterProducts = (products) => {
+        return products.filter(products => {
+            return products.price >= filters.minPrice &&
+            (filters.category === "all" || products.category === filters.category);
+        })
+    }
+
+    const filteredProducts = filterProducts(products);  
+
+
+    const [cartOpen, setCartOpen] = useState(false);   
+    const toggleCart = () => {
+        setCartOpen(!cartOpen);
+    }
 
     useEffect(() => {
-        if(showCart){
+        if(cartOpen){
             document.body.classList.add('no-scroll');
         } else {
             document.body.classList.remove('no-scroll');
         }
-    }, [showCart])
-
-    const toggleCart = () => {
-        setShowCart(!showCart);
-    }
-
-    const addToCart = (product) => {
-        setCartCount(cartCount + 1);
-        const uniqueId = uuidv4();
-        setCartItems([...cartItems, {...product, id: uniqueId}]);
-    }
-
-    const removeFromCart = (productId) => {
-        setCartCount(cartCount - 1);
-        setCartItems(cartItems.filter(product => product.id !== productId))
-    }
+    })
 
     return (
-       <div>
-        <Header cartCount={cartCount} toggleCart={toggleCart}/>
-        {showCart && <Card cartCount={cartCount}  cartItems={cartItems} removeFromCart={removeFromCart} toggleCart={toggleCart}/>}
-        <Products addToCart={addToCart}/>
+      <CartProvider>
+            <Header toggleCart={toggleCart}/>
+        {cartOpen && <Cart  toggleCart={toggleCart}/>}
+        <Filters setFilters={setFilters}/>
+        <Products  products={filteredProducts} />
         <Footer />
-       </div>
+      </CartProvider>
     )
 }
 

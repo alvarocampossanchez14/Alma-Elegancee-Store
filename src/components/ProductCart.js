@@ -3,9 +3,9 @@ import productImage from "../assets/product_1.webp";
 
 import { FaTrash } from "react-icons/fa";
 
-const ProductCart = ({product, removeFromCart}) => {
+const ProductCart = ({removeFromCart}) => {
     return (
-        <div className="product-cart flex flex-col p-3 items-start border-b-2 w-full">
+        <div className="product-cart flex flex-col p-3 items-start">
             <div className="flex flex-row gap-4 items-center">
                 <div className="product-cart-img">
                     <img src={productImage} alt="Product" className="size-44" />
@@ -18,7 +18,7 @@ const ProductCart = ({product, removeFromCart}) => {
 
             </div>
             <div className="product-cart-delete my-4 ">
-                  <button className="flex flex-row items-center" onClick={() => removeFromCart(product.id)}>
+                  <button className="flex flex-row items-center" onClick={() => removeFromCart(product)}>
                     <FaTrash className="size-5 text-black"/>
                     <h4 className="text-xs font-bold">Eliminar</h4>
                   </button>

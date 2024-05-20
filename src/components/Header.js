@@ -19,7 +19,7 @@ const Header = ({cartCount, toggleCart}) => {
                     </nav>
                     <div className='relative'>
                       <button onClick={toggleCart}>
-                        <span className='z-[-1] rounded-full bg-red-500 w-4 h-4 flex items-center justify-center absolute top-[-15px] left-3 text-white text-xs'>{cartCount}</span>
+                        {/* <span className='z-[-1] rounded-full bg-red-500 w-4 h-4 flex items-center justify-center absolute top-[-15px] left-3 text-white text-xs'>0</span> */}
                         <FiShoppingCart className='size-5'/>
                       </button>
                     </div>
