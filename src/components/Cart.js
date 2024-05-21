@@ -8,9 +8,10 @@ import { IoIosCloseCircleOutline } from "react-icons/io";
 
 import { useCart } from "../hook/useCart"; 
 
-function CartItem ({src, name, price, title, quantity}) {
-    // <button> + </button> 
-    const {addToCart} = useCart()   
+function CartItem ({src, name, price, title, quantity, product}) {
+    
+const {addToCart, removeFromCart} = useCart()
+
     return (
         <li className="flex flex-col gap-2 border-b-[1.5px] border-black p-3">
         <img 
@@ -25,9 +26,10 @@ function CartItem ({src, name, price, title, quantity}) {
         </div>
         <footer className="flex flex-row gap-5 items-center justify-center">
             <small>
-                Qty: {quantity}
+                Quantity: {quantity}
             </small>
-            <button className="h-5 w-5 bg-black text-white justify-center items-center flex flex-row rounded-full">+</button>
+            <button  onClick={() => addToCart(product)} className="h-5 w-5 bg-black text-white justify-center items-center flex flex-row rounded-full">+</button>
+            <button  onClick={()=> removeFromCart(product)} className="h-5 w-5 bg-black text-white justify-center items-center flex flex-row rounded-full">-</button>
         </footer>
     </li>
     )
@@ -39,7 +41,7 @@ const Cart = ({toggleCart}) => {
 
     const {cart, clearCart} = useCart()    
     return (
-        <aside className="cart bg-white border-2  fixed right-0 top-0 w-96 h-full p-0 py-10 ">
+        <aside className="cart bg-white border-2  fixed right-0 top-0 w-96 h-full p-0 py-10 overflow-y-scroll">
             <div className="cart-content flex flex-col items-center justify-center">
                 <button className="fixed top-4 right-5" onClick={toggleCart}>
                     <IoIosCloseCircleOutline className="size-7"/>
@@ -47,10 +49,18 @@ const Cart = ({toggleCart}) => {
 
                 <ul className="flex flex-col items-center gap-5">
                     {cart.map(product => (
+                        console.log(product),
                         <CartItem 
+                            // addToCart={() => addToCart(product)}
                             key={product.id}
-                            addToCart={() => addToCart(product)}
+                            product={product}
                             {...product}
+
+                            // src={product.src}
+                            // name={product.name}
+                            // price={product.price}
+                            // title={product.title}
+                            // quantity={product.quantity}
                         />
                     ))}
                 </ul>

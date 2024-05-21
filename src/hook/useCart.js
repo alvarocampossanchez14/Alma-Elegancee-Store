@@ -7,5 +7,6 @@ export const useCart = () => {
     if(cart === undefined) {
         throw new Error('useCart must be used within a CartProvider')
     }
+    
     return cart
 }

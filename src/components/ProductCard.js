@@ -29,7 +29,7 @@ const ProductCard = ({product}) => {
                 <button onClick={() =>
                      isProductInCart 
                         ? removeFromCart(product)
-                        : addToCart(product)} 
+                        : addToCart(product, 1)} 
                         className={`w-10 h-10 border-2 border-black rounded-full flex flex-row items-center justify-center  hover:translate-y-[-5px] ${isProductInCart ? "bg-black" : "bg-white"}`}>
                         {
                             isProductInCart 
