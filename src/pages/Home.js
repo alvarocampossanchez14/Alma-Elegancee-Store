@@ -36,6 +36,22 @@ const Home = () => {
         setCartOpen(!cartOpen);
     }
 
+    useEffect(()=> {
+        const handleESC = (event) => {
+            if (event.keyCode === 27 && cartOpen === true) {
+                toggleCart()
+                console.log("cart open")
+            } else {
+                console.log("cart close")
+            }
+        }
+        window.addEventListener('keydown', handleESC);
+
+        return () => {
+            window.removeEventListener('keydown', handleESC);
+        }
+    })
+
     useEffect(() => {
         if(cartOpen){
             document.body.classList.add('no-scroll');

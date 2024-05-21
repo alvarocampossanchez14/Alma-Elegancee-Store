@@ -5,6 +5,10 @@
 #IDX
 /.idx
 
+
+#vscode
+/.vscode
+
 # testing
 /coverage
 

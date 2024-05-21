@@ -34,7 +34,7 @@ export function Filters({setFilters}) {
                     onChange={handleChangeMinPrice}
                     className='appearance-none w-22 h-[2px] bg-black rounded-md shadow-inner'
                 />
-                <span>{minPrice}</span>
+                <span>{minPrice} €</span>
             </div>
 
             <div className='flex flex-row gap-2 items-center'>

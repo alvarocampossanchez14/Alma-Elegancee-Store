@@ -51,16 +51,9 @@ const Cart = ({toggleCart}) => {
                     {cart.map(product => (
                         console.log(product),
                         <CartItem 
-                            // addToCart={() => addToCart(product)}
                             key={product.id}
                             product={product}
                             {...product}
-
-                            // src={product.src}
-                            // name={product.name}
-                            // price={product.price}
-                            // title={product.title}
-                            // quantity={product.quantity}
                         />
                     ))}
                 </ul>
