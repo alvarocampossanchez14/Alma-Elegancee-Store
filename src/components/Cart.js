@@ -26,7 +26,7 @@ const {addToCart, removeFromCart} = useCart()
         </div>
         <footer className="flex flex-row gap-5 items-center justify-center">
             <small>
-                Quantity: {quantity}
+                Cantidad: {quantity}
             </small>
             <button  onClick={() => addToCart(product)} className="h-5 w-5 bg-black text-white justify-center items-center flex flex-row rounded-full">+</button>
             <button  onClick={()=> removeFromCart(product)} className="h-5 w-5 bg-black text-white justify-center items-center flex flex-row rounded-full">-</button>
@@ -39,14 +39,20 @@ const {addToCart, removeFromCart} = useCart()
 
 const Cart = ({toggleCart}) => { 
 
-    const {cart, clearCart} = useCart()    
+    const {cart, clearCart, calculateTotal} = useCart()    
     return (
-        <aside className="cart bg-white border-2  fixed right-0 top-0 w-96 h-full p-0 py-10 overflow-y-scroll">
+        <aside className="cart bg-white border-2  fixed right-0 top-0 w-[25rem] h-full p-0 py-10 overflow-y-scroll">
             <div className="cart-content flex flex-col items-center justify-center">
+
                 <button className="fixed top-4 right-5" onClick={toggleCart}>
                     <IoIosCloseCircleOutline className="size-7"/>
                 </button>
 
+                {cart.length > 0 ? (
+                    <span className="mt-5 mb-5">Tienes {cart.length} productos en el carrito</span>
+                    ) : (
+                    <span>No tienes productos en el carrito</span>)
+                }
                 <ul className="flex flex-col items-center gap-5">
                     {cart.map(product => (
                         console.log(product),
@@ -57,9 +63,15 @@ const Cart = ({toggleCart}) => {
                         />
                     ))}
                 </ul>
+
+                <div className="flex flex-row gap-20 my-5">
+                    <span className="font-bold">Subtotal:</span>
+                    <span>{calculateTotal()}€</span>
+                </div>
+                
                 <button className="h-12 w-16 my-3 bg-black rounded-md flex flex-row items-center justify-center" onClick={clearCart}>
                         <MdOutlineRemoveShoppingCart size="20" className="text-white"/>
-                    </button>
+                </button>
             </div>
         </aside>
     );

@@ -5,7 +5,7 @@ const Enlace = () => {
     return (
         <div className="flex flex-col justify-center items-center h-screen gap-5">
             <h1 className="text-3xl sm:text-lg xl:text-5xl">Proximamente...</h1>
-            <button className="bg-gray-200 p-3 border-2 border-black rounded-xl"><Link to="/home">Ir al inicio</Link></button>
+            <button className="bg-gray-200 p-3 border-2 border-black rounded-xl"><Link to="/">Ir al inicio</Link></button>
         </div>
     );
 }

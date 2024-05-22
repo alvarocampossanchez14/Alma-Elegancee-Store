@@ -32,10 +32,6 @@ export function CartProvider({children}) {
         })
     }
 
-    useEffect(()=> {
-        console.log(cart)
-    })
-
        const removeFromCart = product => {
         setCart(prevCart => {
             const productInCartIndex = prevCart.findIndex(item => item.id === product.id);
@@ -51,15 +47,20 @@ export function CartProvider({children}) {
             }
             return prevCart;
         });
-        console.log("Remove from cart", newCart)
+        // console.log("Remove from cart", newCart)
     };
 
     const clearCart = () => {
         setCart([])
     }
 
+    const calculateTotal = () => {
+        return cart.reduce((total, product)=> 
+            total += product.price * product.quantity, 0)
+    }
+
     return (
-        <CartContext.Provider value={{cart, addToCart, clearCart, removeFromCart}}>
+        <CartContext.Provider value={{cart, addToCart, clearCart, removeFromCart, calculateTotal}}>
             {children}
         </CartContext.Provider>
     )

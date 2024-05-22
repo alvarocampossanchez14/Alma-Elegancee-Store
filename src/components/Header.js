@@ -5,6 +5,10 @@ import { Link } from 'react-router-dom';
 import { FiShoppingCart } from "react-icons/fi";
 
 const Header = ({cartCount, toggleCart}) => {
+
+
+
+    
     return (
         <header>
             <div className='w-100 font-semibold flex flex-col justify-center items-center pr-20 pl-20'>
@@ -12,9 +16,9 @@ const Header = ({cartCount, toggleCart}) => {
                 <div className='flex flex-row justify-center items-center'>
                     <nav>
                         <ul className='flex flex-row'>
-                            <li className='mx-2'><Link to="/home">Inici</Link></li>
-                            <li className='mx-2'><Link to="/colecciones">Coleccions</Link></li>
-                            <li className='mx-2'><Link to="/nosotros">Nosaltres</Link></li>
+                            <li className='mx-2'><Link to="/">Inicio</Link></li>
+                            <li className='mx-2'><Link to="/colecciones">Colecciones</Link></li>
+                            <li className='mx-2'><Link to="/nosotros">Nosotros</Link></li>
                         </ul>
                     </nav>
                     <div className='relative'>
