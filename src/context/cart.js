@@ -36,23 +36,23 @@ export function CartProvider({children}) {
         console.log(cart)
     })
 
-    const removeFromCart = product => {
-        setCart(prevState => {
-            const productInCartIndex = prevState.findIndex(item => item.id === product.id)
-
-            if(productInCartIndex > 0) {
-                const newCart = [...prevState]
-                newCart[productInCartIndex].quantity -= 1
-                return newCart
-            } else {
-                prevState.filter(item => item.id !== product.id)
+       const removeFromCart = product => {
+        setCart(prevCart => {
+            const productInCartIndex = prevCart.findIndex(item => item.id === product.id);
+            if (productInCartIndex >= 0) {
+                const newCart = [...prevCart];
+                const productInCart = newCart[productInCartIndex];
+                if (productInCart.quantity > 1) {
+                    productInCart.quantity -= 1;
+                } else {
+                    newCart.splice(productInCartIndex, 1);
+                }
+                return newCart;
             }
-
-        } 
-        )
-        console.log("Remove from cart:", cart)
-
-    }
+            return prevCart;
+        });
+        console.log("Remove from cart", newCart)
+    };
 
     const clearCart = () => {
         setCart([])
