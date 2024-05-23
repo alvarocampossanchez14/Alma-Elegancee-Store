@@ -1,5 +1,5 @@
 import React, {lazy, Suspense, Component, useEffect, useState} from 'react';
-import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
+import { BrowserRouter, Route, Routes, useLocation} from "react-router-dom";
 import './App.css';
 
 
@@ -18,154 +18,105 @@ import Products from './components/Products';
 import Cart from './components/Cart';
 import { Filters } from "./components/Filters";
 
-// const Home = () => {
+const App = () => {
 
-//   const [products] = useState(initialProducts);
-//   const [filters, setFilters] = useState({
-//       category: "all",
-//       minPrice: 0,
-//   });
+  const [products] = useState(initialProducts)
+  const [filters, setFilters] = useState({
+    category: "all",
+    minPrice: 0
+  })
 
-//   const filterProducts = (products) => {
-//       return products.filter(products => {
-//           return products.price >= filters.minPrice &&
-//           (filters.category === "all" || products.category === filters.category);
-//       })
-//   }
-
-//   const filteredProducts = filterProducts(products);  
-
-
-//   const [cartOpen, setCartOpen] = useState(false);   
-//   const toggleCart = () => {
-//       setCartOpen(!cartOpen);
-//   }
-
-//   useEffect(()=> {
-//       const handleESC = (event) => {
-//           if (event.keyCode === 27 && cartOpen === true) {
-//               toggleCart()
-//               console.log("cart open")
-//           } else {
-//               console.log("cart close")
-//           }
-//       }
-//       window.addEventListener('keydown', handleESC);
-
-//       return () => {
-//           window.removeEventListener('keydown', handleESC);
-//       }
-//   })
-
-//   useEffect(() => {
-//       if(cartOpen){
-//           document.body.classList.add('no-scroll');
-//       } else {
-//           document.body.classList.remove('no-scroll');
-//       }
-//   })
-
-//   return (
-//       <div>
-//           {cartOpen && <Cart  toggleCart={toggleCart}/>}
-//           <Filters setFilters={setFilters}/>
-//           <Products  products={filteredProducts} />
-//           <Footer />
-//       </div>
-//   )
-// }
-
-
-class App extends Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      cartOpen: false,
-      products: initialProducts,
-      filters: {
-        category: "all",
-        minPrice: 0,
-      } 
-    };
-  }
-
-  
-
-
-  
-
-
-  
-  toggleCart = () => {
-    this.setState({cartOpen: !this.state.cartOpen})
-  }
-
-  filterProducts = (products) => {  
+  const filterProducts = (products) => {
     return products.filter(products => {
-      return products.price >= this.state.filters.minPrice && 
-      (this.state.filters.category === "all" || this.state.filters.category)
+      return products.price >= filters.minPrice &&
+      (filters.category === "all" || products.category === filters.category)
     })
   }
 
-  componentDidMount() {
-    this.handleESC = (e) => {
-      if(e.keyCode === 27 && this.state.cartOpen === true) {
-        this.toggleCart()
-      } else {
-        console.log("cart close")
-      }
-    }
-    window.addEventListener('keydown', this.handleESC);
+  const filteredProducts = filterProducts(products)
 
-    if(this.state.cartOpen) {
+  const [cartOpen, setCartOpen] = useState(false)
+
+  const toggleCart = () =>  {
+    setCartOpen(!cartOpen)
+  }
+
+  useEffect(()=> {
+    const handleESC = (e) => {
+      if(e.keyCode === 27 && cartOpen) {
+        toggleCart()
+      } else {
+        console.log("Cart close")
+      }
+  
+      window.addEventListener('keydown', handleESC)
+    }
+
+    return () => {
+      window.removeEventListener('keydown', handleESC)
+    }
+  })
+
+  useEffect(()=> {
+    if(cartOpen) {
       document.body.classList.add('no-scroll')
     } else {
       document.body.classList.remove('no-scroll')
     }
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    if(prevState.cartOpen !== this.state.cartOpen) {
-      if(this.state.cartOpen) {
-        document.body.classList.add('no-scroll')  
-      } else {
-        document.body.classList.remove('no-scroll')
-      }
-    }
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('keydown', this.handleESC)
-  }
-
-  render() {
-    const filteredProducts = this.filterProducts(this.state.products);
-
-  
+  })
     return (
         <div className="App">
           <CartProvider>
             <BrowserRouter>
-               <Header toggleCart={this.toggleCart}/>
+               <HeaderManager toggleCart={toggleCart} />
+                <FilterManager setFilters={setFilters} />
                <Suspense fallback={<div>Loading..</div>}>
                 <Routes>
                   <Route path="/" element={<Products products={filteredProducts} />} />
-                  {/* <Route path="/home" element={<Suspense fallback={<div>Loading..</div>}><Home /></Suspense>} /> */}
                   <Route path="/colecciones" element={<Enlace />}  />
                   <Route path="/nosotros" element={<About />}  />
-                  </Routes>
+                </Routes>
                 </Suspense>
-                {this.state.cartOpen && <Cart toggleCart={this.toggleCart}/>}
+                {cartOpen && <Cart toggleCart={toggleCart}/>}
                 <Footer />
              <PageTitleUpdater />
             </BrowserRouter>
           </CartProvider>
         </div>
     );
-  }
+
 }
 
+const FilterManager = ({setFilters}) => {
+  const [showFilters, setShowFilters] = useState(false)
+
+  const location = useLocation()
+  
+  useEffect(()=> {
+    if(location.pathname === "/") {
+      setShowFilters(true)
+    } else {
+      setShowFilters(false)
+    }
+  }, [location])
+
+  return showFilters ? <Filters setFilters={setFilters} /> : null;
+}
+
+const HeaderManager = ({toggleCart}) => {
+  const location = useLocation()
+  const [showHeader, setShowHeader] = useState(false)
+
+  useEffect(()=> {
+    if(location.pathname === "/colecciones") {
+      setShowHeader(false)
+  } else {
+    setShowHeader(true)
+  }
+  }, [location])
+
+  return showHeader ? <Header toggleCart={toggleCart}/> : null;
+}
 
 function PageTitleUpdater() {
   const location = useLocation();
