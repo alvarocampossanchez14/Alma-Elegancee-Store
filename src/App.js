@@ -48,10 +48,9 @@ const App = () => {
       } else {
         console.log("Cart close")
       }
-  
-      window.addEventListener('keydown', handleESC)
     }
-
+    
+    window.addEventListener('keydown', handleESC)
     return () => {
       window.removeEventListener('keydown', handleESC)
     }
