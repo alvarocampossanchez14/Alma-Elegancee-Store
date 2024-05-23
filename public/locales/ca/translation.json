@@ -1,0 +1,37 @@
+{
+    "header": {
+        "title": "Inici",
+        "contact": "Contacte",
+        "about": "Nosaltres",
+        "motto": "Sent l'elegància, viu l'ànima"
+    },
+
+    "filters": {
+        "price": "Preu",
+        "filtersName": {
+            "all": "Tots",
+            "tshirt": "Samarretes",
+            "backpack": "Motxilles",
+            "mug": "Tasses",
+            "slides": "Xancletes",
+            "phoneCase": "Fundes de mòbil"
+        }
+    },
+
+    "cart": {
+        "title": "No tens productes al carret",
+        "total": "Subtotal"   
+    },
+
+    "about": {
+        "title": "Sobre nosaltres",
+        "firstParagraph": "Som Olga, Laia, Marta i Álvaro, un equip apassionat per la moda i compromès amb oferir-te el millor en roba i accessoris. La nostra missió és proporcionar-te peces de roba d'alta qualitat que et facin sentir còmode, segur i a la moda en qualsevol ocasió.",
+        "secondParagraph": "Cadascun de nosaltres aporta la seva pròpia perspectiva i estil, cosa que ens permet curar una col·lecció diversa i contemporània que s'adapta a tots els gustos i necessitats. Des de les últimes tendències fins als clàssics imprescindibles, som aquí per ajudar-te a trobar exactament el que busques.",
+        "thirstParagraph": "La nostra botiga no només se centra en la qualitat dels productes, sinó també en oferir una experiència de compra excepcional. Valorem els nostres clients i ens esforcem per oferir un servei personalitzat, atenent les teves inquietuds i necessitats amb promptitud i dedicació."
+    },
+
+    "footer": {
+        "title": "Botiga creada a Espanya",
+        "copyright": "Tots els drets reservats"
+    }
+}

@@ -4,10 +4,39 @@ import { Link } from 'react-router-dom';
 
 import { FiShoppingCart } from "react-icons/fi";
 
+import { useTranslation} from 'react-i18next'
+
+import catIcon from '../assets/bandera_cat.png'
+
+const LanguageSelector = () => {
+    const {i18n} = useTranslation()
+
+    const changeLanguage = (lng) => {
+        i18n.changeLanguage(lng)
+    };
+
+    const toggleLanguage = () => {
+        if(i18n.language === 'es') {
+            changeLanguage('ca')
+        } else if(i18n.language === 'ca') {
+            changeLanguage('es')
+        }
+    }
+
+    
+
+    return (
+        <div className='flex flex-row gap-1 ml-5'>
+            <button onClick={() => toggleLanguage()}>
+                {i18n.language === 'es' ? <img src={catIcon}/> : '🇪🇸' }
+            </button>
+        </div>
+    )
+}
+
 const Header = ({cartCount, toggleCart}) => {
 
-
-
+const {t} = useTranslation()
     
     return (
         <header>
@@ -16,9 +45,9 @@ const Header = ({cartCount, toggleCart}) => {
                 <div className='flex flex-row justify-center items-center'>
                     <nav>
                         <ul className='flex flex-row'>
-                            <li className='mx-2'><Link to="/">Inicio</Link></li>
-                            <li className='mx-2'><Link to="/colecciones">Colecciones</Link></li>
-                            <li className='mx-2'><Link to="/nosotros">Nosotros</Link></li>
+                            <li className='mx-2'><Link to="/">{t('header.title')}</Link></li>
+                            <li className='mx-2'><Link to="/nosotros">{t('header.about')}</Link></li>
+                            <li className='mx-2'><Link to="/contacto">{t('header.contact')}</Link></li>
                         </ul>
                     </nav>
                     <div className='relative'>
@@ -27,12 +56,15 @@ const Header = ({cartCount, toggleCart}) => {
                         <FiShoppingCart className='size-5'/>
                       </button>
                     </div>
+                    <div>
+                        <LanguageSelector/>
+                    </div>
                 </div>
             </div>
 
             <div className='w-100 bg-black my-3'>
                 <div className='flex flex-row justify-center text-white'>
-                    <h5 className='italic font-light p-3'>"Siente la elegancia, vive el alma"</h5>
+                    <h5 className='italic font-light p-3'>"{t('header.motto')}"</h5>
                 </div>
             </div>
         </header>

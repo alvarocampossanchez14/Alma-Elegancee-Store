@@ -1,0 +1,38 @@
+
+{
+    "header": {
+        "title": "Inicio",
+        "contact": "Contacto",
+        "about": "Nosotros",
+        "motto": "Siente la elegancia, vive el alma"
+    },
+
+    "filters": {
+        "price": "Precio",
+        "filtersName": {
+            "all": "Todos",
+            "tshirt": "Camisetas",
+            "backpack": "Mochilas",
+            "mug": "Tazas",
+            "slides": "Chanclas",
+            "phoneCase": "Fundas de móvil"
+        }
+    },
+
+    "cart": {
+     "title": "No tienes productos en el carrito",
+     "total": "Subtotal"   
+    },
+
+    "about": {
+        "title": "Sobre nosotros",
+        "firstParagraph": "Somos Olga, Laia, Marta y Álvaro, un equipo apasionado por la moda y comprometido con ofrecerte lo mejor en ropa y accesorios. Nuestra misión es proporcionarte prendas de alta calidad que te hagan sentir cómodo, seguro y la moda en cualquier ocasión.",
+        "secondParagraph": "Cada uno de nosotros aporta su propia perspectiva y estilo, lo que nos permite curar una colección diversa y contemporánea que se adapta a todos los gustos y necesidades. Desde las últimas tendencias hasta los clásicos imprescindibles, estamos aquí para ayudarte a encontrar exactamente lo que buscas.",
+        "thirstParagraph": "Nuestra tienda no solo se enfoca en la calidad de los productos, sino también en brindar una experiencia de compra excepcional. Valoramos a nuestros clientes y nos esforzamos por ofrecer un servicio personalizado, atendiendo tus inquietudes y necesidades con prontitud y dedicación."
+    },
+
+    "footer": {
+        "title": "Tienda creada en España",
+        "copyright": "Todos los derechos reservados"
+    }
+}

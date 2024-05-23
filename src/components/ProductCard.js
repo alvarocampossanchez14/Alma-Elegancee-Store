@@ -3,9 +3,11 @@ import { useCart } from "../hook/useCart";
 
 import { BsCartFill, BsCartDashFill } from "react-icons/bs";
 
+import {useTranslation} from "react-i18next";
 
 
 const ProductCard = ({product}) => {  
+    const {i18n} = useTranslation();
 
     const {addToCart, cart, removeFromCart} = useCart()
 
@@ -22,8 +24,8 @@ const ProductCard = ({product}) => {
             </div>
             <div className="flex flex-row items-center gap-9">
                 <div className="product-card__info flex flex-col ">
-                    <strong>{product.name}</strong>
-                    <p>{product.description}</p>
+                    <span>{product.name[i18n.language]}</span>
+                    {/* <p>{product.description[i18n.language]}</p> */}
                     <strong>{product.price}€</strong>
                 </div>
                 <button onClick={() =>

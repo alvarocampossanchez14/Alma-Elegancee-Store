@@ -72,7 +72,7 @@ const App = () => {
                <Suspense fallback={<div>Loading..</div>}>
                 <Routes>
                   <Route path="/" element={<Products products={filteredProducts} />} />
-                  <Route path="/colecciones" element={<Enlace />}  />
+                  <Route path="/contacto" element={<Enlace />}  />
                   <Route path="/nosotros" element={<About />}  />
                 </Routes>
                 </Suspense>
@@ -107,7 +107,7 @@ const HeaderManager = ({toggleCart}) => {
   const [showHeader, setShowHeader] = useState(false)
 
   useEffect(()=> {
-    if(location.pathname === "/colecciones") {
+    if(location.pathname === "/contacto") {
       setShowHeader(false)
   } else {
     setShowHeader(true)

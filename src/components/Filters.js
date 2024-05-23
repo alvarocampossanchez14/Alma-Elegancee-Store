@@ -1,5 +1,7 @@
 import {useState, useId} from 'react'
 
+import {useTranslation} from "react-i18next"
+
 export function Filters({setFilters}) {
 
     const [minPrice, setMinPrice] = useState(0) 
@@ -21,10 +23,12 @@ export function Filters({setFilters}) {
         }))
     }   
 
+    const {t} = useTranslation()
+
     return (
         <section className='flex flex-col xl:flex-row md:flex-row gap-5 items-center right-0 z-[-1] justify-center'>
             <div className='flex flex-row items-center gap-2'>
-                <label htmlFor={minPriceFilterId}>Precio</label>
+                <label htmlFor={minPriceFilterId}>{t('filters.price')}</label>
                 <input 
                     type="range"
                     id={minPriceFilterId}
@@ -38,14 +42,14 @@ export function Filters({setFilters}) {
             </div>
 
             <div className='flex flex-row gap-2 items-center'>
-                <option value="all">Todos</option>
+                <option value="all">{t('filters.filtersName.all')}</option>
                 <select id={categoryFilterId} onChange={handleChangeCategory} className='bg-transparent border-2 border-black rounded-md p-1 m-0'>
-                    <option value="all">Todos</option>
-                    <option value="T-Shirt">Camisetas</option>
-                    <option value="Backpack">Mochilas</option>
-                    <option value="Mug">Tazas</option>
-                    <option value="Slides">Sandalias</option>
-                    <option value="Phone Case">Fundas de móvil</option>
+                    <option value="all">{t('filters.filtersName.all')}</option>
+                    <option value="t-shirt">{t('filters.filtersName.tshirt')}</option>
+                    <option value="backpack">{t('filters.filtersName.backpack')}</option>
+                    <option value="mug">{t('filters.filtersName.mug')}</option>
+                    <option value="slides">{t('filters.filtersName.slides')}</option>
+                    <option value="phone case">{t('filters.filtersName.phoneCase')}</option>
                 </select>
             </div>
         </section>

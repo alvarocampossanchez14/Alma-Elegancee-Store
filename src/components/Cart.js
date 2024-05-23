@@ -8,6 +8,8 @@ import { IoIosCloseCircleOutline } from "react-icons/io";
 
 import { useCart } from "../hook/useCart"; 
 
+import {useTranslation} from "react-i18next"
+
 function CartItem ({src, name, price, title, quantity, product}) {
     
 const {addToCart, removeFromCart} = useCart()
@@ -39,6 +41,8 @@ const {addToCart, removeFromCart} = useCart()
 
 const Cart = ({toggleCart}) => { 
 
+    const {t} = useTranslation();
+
     const {cart, clearCart, calculateTotal} = useCart()    
     return (
         <aside className="cart bg-white border-2  fixed right-0 top-0 w-[25rem] h-full p-0 py-10 overflow-y-scroll">
@@ -51,7 +55,7 @@ const Cart = ({toggleCart}) => {
                 {cart.length > 0 ? (
                     <span className="mt-5 mb-5">Tienes {cart.length} productos en el carrito</span>
                     ) : (
-                    <span>No tienes productos en el carrito</span>)
+                    <span>{t('cart.title')}</span>)
                 }
                 <ul className="flex flex-col items-center gap-5">
                     {cart.map(product => (
@@ -65,7 +69,7 @@ const Cart = ({toggleCart}) => {
                 </ul>
 
                 <div className="flex flex-row gap-20 my-5">
-                    <span className="font-bold">Subtotal:</span>
+                    <span className="font-bold">{t('cart.total')}:</span>
                     <span>{calculateTotal()}€</span>
                 </div>
                 
