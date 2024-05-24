@@ -10,7 +10,7 @@ const SignUp = () => {
   const [password, setPassword] = useState('');
   const [errorResponse, setErrorResponse] = useState(null);
 
-  const API_URL = process.env.API_URL || 'http://localhost:3100';
+  const API_URL = process.env.API_URL;
 
   const auth = useAuth();
   const goTo = useNavigate()
