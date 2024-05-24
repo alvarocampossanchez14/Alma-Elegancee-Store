@@ -2,8 +2,7 @@ import React, {lazy, Suspense, Component, useEffect, useState} from 'react';
 import { BrowserRouter, Route, Routes, useLocation} from "react-router-dom";
 import './App.css';
 
-
-import {products as initialProducts, products} from "./mocks/ProductList"; // Import the products data
+import {products as initialProducts, products} from "./mocks/ManProductList"; // Import the products data
 
 // Pages
 const Enlace = lazy(() => import('./pages/Enlace'));
@@ -17,23 +16,11 @@ import Footer  from './components/Footer';
 import Products from './components/Products';
 import Cart from './components/Cart';
 import { Filters } from "./components/Filters";
+import CategorySelector from './components/CategorySelector';
+import ProductsMan from './pages/ProductsMan';
+import ProductsWoman from './pages/ProductsWoman';
 
 const App = () => {
-
-  const [products] = useState(initialProducts)
-  const [filters, setFilters] = useState({
-    category: "all",
-    minPrice: 0
-  })
-
-  const filterProducts = (products) => {
-    return products.filter(products => {
-      return products.price >= filters.minPrice &&
-      (filters.category === "all" || products.category === filters.category)
-    })
-  }
-
-  const filteredProducts = filterProducts(products)
 
   const [cartOpen, setCartOpen] = useState(false)
 
@@ -64,14 +51,18 @@ const App = () => {
     }
   })
     return (
+     // <Products products={filteredProducts} 
+     // <FilterManager setFilters={setFilters} />
         <div className="App">
           <CartProvider>
             <BrowserRouter>
                <HeaderManager toggleCart={toggleCart} />
-                <FilterManager setFilters={setFilters} />
+              
                <Suspense fallback={<div>Loading..</div>}>
                 <Routes>
-                  <Route path="/" element={<Products products={filteredProducts} />} />
+                  <Route path="/" element={<CategorySelector />}/>
+                  <Route path="/coleccion/hombre" element={<ProductsMan />}/>
+                  <Route path="/coleccion/mujer" element={<ProductsWoman />}/>
                   <Route path="/contacto" element={<Enlace />}  />
                   <Route path="/nosotros" element={<About />}  />
                 </Routes>

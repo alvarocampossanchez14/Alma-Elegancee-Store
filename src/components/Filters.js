@@ -26,7 +26,7 @@ export function Filters({setFilters}) {
     const {t} = useTranslation()
 
     return (
-        <section className='flex flex-col xl:flex-row md:flex-row gap-5 items-center right-0 z-[-1] justify-center'>
+        <section className='flex flex-col xl:flex-row md:flex-row gap-5 items-center right-0 z-[-1] justify-center mt-4'>
             <div className='flex flex-row items-center gap-2'>
                 <label htmlFor={minPriceFilterId}>{t('filters.price')}</label>
                 <input 

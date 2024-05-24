@@ -62,7 +62,7 @@ const {t} = useTranslation()
                 </div>
             </div>
 
-            <div className='w-100 bg-black my-3'>
+            <div className='w-100 bg-black mt-3'>
                 <div className='flex flex-row justify-center text-white'>
                     <h5 className='italic font-light p-3'>"{t('header.motto')}"</h5>
                 </div>

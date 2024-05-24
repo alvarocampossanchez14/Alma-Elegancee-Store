@@ -14,6 +14,8 @@ function CartItem ({src, name, price, title, quantity, product}) {
     
 const {addToCart, removeFromCart} = useCart()
 
+const {i18n} = useTranslation()
+
     return (
         <li className="flex flex-col gap-2 border-b-[1.5px] border-black p-3">
         <img 
@@ -22,7 +24,7 @@ const {addToCart, removeFromCart} = useCart()
             className="w-36 h-36"
         />
         <div className="flex flex-row gap-3">
-            <strong>{name}</strong>
+            <strong>{name[i18n.language]}</strong>
             <span>-</span>
             <span>{price}€</span>
         </div>

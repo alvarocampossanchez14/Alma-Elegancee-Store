@@ -23,6 +23,12 @@
         "total": "Subtotal"   
     },
 
+    "catSelector": {
+        "man": "Home",
+        "women": "Dona"
+    },
+
+
     "about": {
         "title": "Sobre nosaltres",
         "firstParagraph": "Som Olga, Laia, Marta i Álvaro, un equip apassionat per la moda i compromès amb oferir-te el millor en roba i accessoris. La nostra missió és proporcionar-te peces de roba d'alta qualitat que et facin sentir còmode, segur i a la moda en qualsevol ocasió.",

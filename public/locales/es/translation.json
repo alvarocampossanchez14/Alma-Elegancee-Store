@@ -24,6 +24,11 @@
      "total": "Subtotal"   
     },
 
+    "catSelector": {
+        "man": "Hombre",
+        "women": "Mujer"
+    },
+
     "about": {
         "title": "Sobre nosotros",
         "firstParagraph": "Somos Olga, Laia, Marta y Álvaro, un equipo apasionado por la moda y comprometido con ofrecerte lo mejor en ropa y accesorios. Nuestra misión es proporcionarte prendas de alta calidad que te hagan sentir cómodo, seguro y la moda en cualquier ocasión.",
