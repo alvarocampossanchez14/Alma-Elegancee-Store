@@ -23,6 +23,9 @@ import ProductsWoman from './pages/ProductsWoman';
 import { AuthProvider } from './context/authProvider';
 import SignUp from './pages/SignUp';
 
+import { useAuth } from "./hook/useAuth"
+import LoginRedirect from './pages/LoginRedirect';
+
 const App = () => {
 
   const [cartOpen, setCartOpen] = useState(false)
@@ -53,6 +56,8 @@ const App = () => {
       document.body.classList.remove('no-scroll')
     }
   })
+
+
     return (
      // <Products products={filteredProducts} 
      // <FilterManager setFilters={setFilters} />
@@ -60,13 +65,13 @@ const App = () => {
           <AuthProvider>
             <CartProvider>
               <BrowserRouter>
-                <HeaderManager toggleCart={toggleCart} />
-                
+                <HeaderManager toggleCart={toggleCart} />   
                 <Suspense fallback={<div>Loading..</div>}>
                   <Routes>
                     <Route path="/" element={<CategorySelector />}/>
                     <Route path="/signup" element={<SignUp />} />
                     <Route path="/login" element={<Login />} />
+                    <Route path="/isLogin" element={<LoginRedirect />} />
                     <Route path="/coleccion/hombre" element={<ProductsMan />}/>
                     <Route path="/coleccion/mujer" element={<ProductsWoman />}/>
                     <Route path="/contacto" element={<Enlace />}  />

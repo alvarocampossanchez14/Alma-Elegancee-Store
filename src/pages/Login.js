@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { AuthResponseErrorPropType } from "../types/types";
+import { AuthResponseErrorPropType, AuthResponsePropType } from "../types/types";
 import { useAuth } from "../hook/useAuth";
 import { Navigate, useNavigate } from "react-router-dom";
 import { API_URL } from "../auth/constants";
@@ -14,7 +14,7 @@ const Login = () => {
   const goto = useNavigate()
 
   if (auth.isAuthenticated) {
-    return <Navigate to="/" />;
+    return <Navigate to="/isLogin" />;
   }
 
   const handleUserName = (e) => {
@@ -42,8 +42,28 @@ const Login = () => {
 
       if (response.ok) {
         console.log("User Login Successfully");
+        // alert("User Login Successfully")
         setErrorResponse(null); 
-        goto("/")
+        const json = await response.json();
+
+        const errorAuthResponsePropType = PropTypes.checkPropTypes(
+            { body: AuthResponsePropType }, 
+            { body: json }, 
+            'prop',
+            'handleResponse'
+          );
+  
+          if (!errorAuthResponsePropType) {
+            setErrorResponse(json.body.error);
+          } else {
+            console.error("Invalid error response format", errorAuthResponsePropType);
+          }
+
+          if(json.body.accessToken && json.body.refreshToken) {
+            auth.saveUser(json);
+          }
+
+        goto("/isLogin")
       } else {
         console.log("Error");
         const json = await response.json();
@@ -69,20 +89,25 @@ const Login = () => {
     }
   };
 
+
   return (
+   auth.isAuthenticated ? (
+    <div>{auth.getUser().username}</div>
+   ) : (
     <form className="flex flex-col justify-center items-center gap-10 h-screen" onSubmit={handleSubmit}>
-      <h1 className="text-3xl mt-5">Identificate </h1>
-      {errorResponse && <div className="text-red-500">{errorResponse}</div>}
-      <div className="flex flex-col">
-        <label htmlFor="user" className="font-bold">Usuario</label>
-        <input id="user" type="text" value={userName} onChange={handleUserName} className="p-3 border-2 border-black" />
-      </div>
-      <div className="flex flex-col">
-        <label htmlFor="password" className="font-bold">Contraseña</label>
-        <input id="password" type="password" value={password} onChange={handlePassword} className="p-3 border-2 border-black" />
-      </div>
-      <button className="py-4 px-12 rounded-md bg-black text-white font-bold hover:scale-[1.1]">Login</button>
-    </form>
+    <h1 className="text-3xl mt-5">Identificate</h1>
+    {errorResponse && <div className="text-red-500">{errorResponse}</div>}
+    <div className="flex flex-col">
+      <label htmlFor="user" className="font-bold">Usuario</label>
+      <input id="user" type="text" value={userName} onChange={handleUserName} className="p-3 border-2 border-black" />
+    </div>
+    <div className="flex flex-col">
+      <label htmlFor="password" className="font-bold">Contraseña</label>
+      <input id="password" type="password" value={password} onChange={handlePassword} className="p-3 border-2 border-black" />
+    </div>
+    <button className="py-4 px-12 rounded-md bg-black text-white font-bold hover:scale-[1.1]">Login</button>
+  </form>
+   )
   );
 };
 

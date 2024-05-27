@@ -8,6 +8,10 @@ import { useTranslation} from 'react-i18next'
 
 import catIcon from '../assets/bandera_cat.png'
 
+import { useAuth } from '../hook/useAuth';
+
+import LogoutButton from './LogoutButton';
+
 const LanguageSelector = () => {
     const {i18n} = useTranslation()
 
@@ -37,7 +41,8 @@ const LanguageSelector = () => {
 const Header = ({cartCount, toggleCart}) => {
 
 const {t} = useTranslation()
-    
+
+
     return (
         <header>
             <div className='w-100 font-semibold flex flex-col justify-center items-center pr-20 pl-20'>
@@ -49,7 +54,7 @@ const {t} = useTranslation()
                             <li className='mx-2'><Link to="/nosotros">{t('header.about')}</Link></li>
                             <li className='mx-2'><Link to="/contacto">{t('header.contact')}</Link></li>
                         </ul>
-                    </nav>
+                    </nav>  
                     <div className='relative'>
                       <button onClick={toggleCart}>
                         {/* <span className='z-[-1] rounded-full bg-red-500 w-4 h-4 flex items-center justify-center absolute top-[-15px] left-3 text-white text-xs'>0</span> */}
@@ -62,7 +67,7 @@ const {t} = useTranslation()
                         <span>|</span>
                         <Link to="/signup">Registrarse</Link>
                     </div>
-
+                    <LogoutButton />
                     <div>
                         <LanguageSelector/>
                     </div>

@@ -20,16 +20,19 @@ app.use(cors());
 app.use(express.json());
 
 
+const authenticate = require('./auth/authenticate');
 
 const loginRouter = require('./routes/login');
 const signupRouter = require('./routes/signup');
 const refreshTokenRouter = require('./routes/refreshToken');
 const signoutRouter = require('./routes/signout');
+const userRouter = require('./routes/user');
 
 app.use('/api/login', loginRouter);
 app.use('/api/signup', signupRouter);
 app.use('/api/refreshToken', refreshTokenRouter);
 app.use('/api/signout', signoutRouter);
+app.use('/api/user', authenticate, userRouter);
 
 
 
