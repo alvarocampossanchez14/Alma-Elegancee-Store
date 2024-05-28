@@ -1,7 +1,8 @@
 function getUserInfo(user) {
     return {
         username: user.username,
-        id: user.id
+        id: user.id,
+        cart: user.cart
     }
 }
 

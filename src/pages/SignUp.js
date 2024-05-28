@@ -31,7 +31,7 @@ const SignUp = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch(`${API_URL}/signup`, {
+      const response = await fetch('http://localhost:3100/api/signup', {
         method: 'POST',
         headers: {
           "Content-Type": "application/json",
@@ -39,6 +39,7 @@ const SignUp = () => {
         body: JSON.stringify({
           username: userName,
           password,
+          cart: JSON.stringify([]),
         }),
       });
 
@@ -46,6 +47,8 @@ const SignUp = () => {
         console.log("User Created Successfully");
         setErrorResponse(null);
         goTo("/");
+        const userData = await response.json();
+        auth.saveUser(userData);
       } else {
         console.log("Error");
         const json = await response.json();
@@ -83,7 +86,7 @@ const SignUp = () => {
         <label htmlFor="password" className="font-bold">Contraseña</label>
         <input id="password" type="password" value={password} onChange={handlePassword} className="p-3 border-2 border-black" />
       </div>
-      <button className="py-4 px-12 rounded-md bg-black text-white font-bold hover:scale-[1.1]">Login</button>
+      <button className="py-4 px-12 rounded-md bg-black text-white font-bold hover:scale-[1.1]">Registrarse</button>
     </form>
   );
 };

@@ -2,6 +2,8 @@ import { createContext, useEffect, useState } from "react";
 import { AuthResponsePropType, AccessTokenResponsePropType } from "../types/types";
 import PropTypes from 'prop-types';
 import { API_URL } from "../auth/constants";
+import { useCart } from "../hook/useCart";
+import Cart from "../components/Cart";
 
 export const AuthContext = createContext();
 
@@ -9,7 +11,8 @@ export function AuthProvider({ children }) {
     const initialState = {
         __id: 0, 
         email: '', 
-        username: '', 
+        username: '',
+        cart: [] 
     };
 
     const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -19,10 +22,17 @@ export function AuthProvider({ children }) {
     });
     const [accessToken, setAccessToken] = useState(localStorage.getItem('accessToken'));
     const [refreshToken, setRefreshToken] = useState(localStorage.getItem('refreshToken'));
+    const {cart} = useCart()
 
     useEffect(() => {
         checkAuth();
     }, []);
+
+    useEffect(()=> {
+        if(isAuthenticated) {
+            updateUserCart(cart)
+        }
+    }, [cart])
 
     async function requestNewAccessToken(refreshToken) {
         try {
@@ -102,13 +112,21 @@ export function AuthProvider({ children }) {
         }
     }
 
+    function updateUserCart(cart) {
+        setUser(prevUser => {
+            const updatedUser = {... prevUser, cart}
+            localStorage.setItem('user', JSON.stringify(updatedUser));
+            return updatedUser
+        })
+    }
+
     function saveSessionInfo(userInfo, accessToken, refreshToken) {
         setAccessToken(accessToken);
         setRefreshToken(refreshToken);
-        setUser(userInfo);
+        setUser({...userInfo, cart});
         localStorage.setItem('accessToken', accessToken);
         localStorage.setItem('refreshToken', refreshToken);
-        localStorage.setItem('user', JSON.stringify(userInfo));
+        localStorage.setItem('user', JSON.stringify({...userInfo, cart}));
         setIsAuthenticated(true);
     }
 
@@ -139,7 +157,7 @@ export function AuthProvider({ children }) {
     }
 
     return (
-        <AuthContext.Provider value={{ isAuthenticated, getAccessToken, saveUser, getRefreshToken, getUser, logout }}>
+        <AuthContext.Provider value={{ isAuthenticated, setIsAuthenticated, getAccessToken, saveUser, getRefreshToken, getUser, logout }}>
             {children}
         </AuthContext.Provider>
     );

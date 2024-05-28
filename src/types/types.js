@@ -1,5 +1,10 @@
 
 import PropTypes from 'prop-types';
+import Cart from '../components/Cart';
+
+// import { useCart } from "../hook/useCart"; 
+
+// const {cart} = useCart(); 
 
 export const AuthResponseErrorPropType = PropTypes.shape({
   body: PropTypes.shape({
@@ -11,6 +16,7 @@ export const UserPropType = PropTypes.shape({
   __id: PropTypes.number.isRequired,
   email: PropTypes.string.isRequired,
   username: PropTypes.string,
+  cart: PropTypes.array.isRequired
 });
 
 export const AuthResponsePropType = PropTypes.shape( {

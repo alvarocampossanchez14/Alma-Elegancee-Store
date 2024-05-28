@@ -1,4 +1,3 @@
-const { error } = require('console');
 const { jsonResponse } = require('../lib/jsonResponse');
 
 const router = require('express').Router()
@@ -17,6 +16,7 @@ router.post('/', async (req, res)=> {
     try {
         const user = new User()
         const exists = await user.usernameExist(username)
+   
 
         if(exists) {
             return res.status(400).json(
@@ -32,7 +32,12 @@ router.post('/', async (req, res)=> {
 
         newUser.save()
 
+        const accessToken = user.createAccessToken();
+        const refreshToken = await user.createRefreshToken();
+
         res.status(200).json(jsonResponse(200, {
+            accessToken,
+            refreshToken,
             message: "User Created Successfully"
         }))
         // res.send('signup')

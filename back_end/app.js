@@ -27,12 +27,16 @@ const signupRouter = require('./routes/signup');
 const refreshTokenRouter = require('./routes/refreshToken');
 const signoutRouter = require('./routes/signout');
 const userRouter = require('./routes/user');
+const testRouter = require('./routes/test');
+const cart = require('./routes/cart');
 
+// app.use('/api/test', testRouter);
 app.use('/api/login', loginRouter);
 app.use('/api/signup', signupRouter);
 app.use('/api/refreshToken', refreshTokenRouter);
 app.use('/api/signout', signoutRouter);
 app.use('/api/user', authenticate, userRouter);
+app.use('/api/cart', cart);
 
 
 

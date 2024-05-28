@@ -62,8 +62,8 @@ const App = () => {
      // <Products products={filteredProducts} 
      // <FilterManager setFilters={setFilters} />
         <div className="App">
-          <AuthProvider>
-            <CartProvider>
+          <CartProvider>
+            <AuthProvider>
               <BrowserRouter>
                 <HeaderManager toggleCart={toggleCart} />   
                 <Suspense fallback={<div>Loading..</div>}>
@@ -82,8 +82,8 @@ const App = () => {
                   <Footer />
               <PageTitleUpdater />
               </BrowserRouter>
-            </CartProvider>
-          </AuthProvider>
+            </AuthProvider>
+          </CartProvider>
         </div>
     );
 
