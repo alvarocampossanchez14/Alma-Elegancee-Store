@@ -3,7 +3,7 @@ import { AuthResponsePropType, AccessTokenResponsePropType } from "../types/type
 import PropTypes from 'prop-types';
 import { API_URL } from "../auth/constants";
 import { useCart } from "../hook/useCart";
-import Cart from "../components/Cart";
+// import Cart from "../components/Cart";
 
 export const AuthContext = createContext();
 
