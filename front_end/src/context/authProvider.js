@@ -1,7 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import { AuthResponsePropType, AccessTokenResponsePropType } from "../types/types";
 import PropTypes from 'prop-types';
-import { API_URL } from "../auth/constants";
 import { useCart } from "../hook/useCart";
 // import Cart from "../components/Cart";
 
@@ -14,6 +13,8 @@ export function AuthProvider({ children }) {
         username: '',
         cart: [] 
     };
+
+    const API_URL = process.env.API_URL || 'http://localhost:3100'
 
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [user, setUser] = useState(() => {
