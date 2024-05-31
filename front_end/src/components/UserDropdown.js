@@ -21,7 +21,7 @@ const UserDropdown = ({ isVisible }) => {
         </>
       ) : (
         <div className='flex flex-col items-center gap-6 shadow-lg'>
-          <div className='px-10 flex flex-col items-center gap-4'>
+          <div className='px-10 py-3 flex flex-col items-center gap-4'>
             <span className='text-xs font-bold uppercase'>¿Ya tienes una cuenta?</span>
             <p className='text-xs font-light text-center'>Conéctese para disfrutar de una experiencia personalizada y beneficiarse de todas sus ventajas y ofertas.</p>
             <Link to="/login" className="block px-10 py-2 text-sm bg-black text-white rounded-xs hover:bg-white hover:text-black">Iniciar Sesión</Link>
