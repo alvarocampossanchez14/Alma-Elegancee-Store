@@ -31,7 +31,7 @@ const SignUp = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch(`${API_URL}/signup`, {
+      const response = await fetch('https://alma-elegancee-api.vercel.app/api/signup', {
         method: 'POST',
         headers: {
           "Content-Type": "application/json",

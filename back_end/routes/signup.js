@@ -4,6 +4,10 @@ const router = require('express').Router()
 
 const User = require('../schema/user')
 
+router.get('/', (req, res) => {
+    res.send('signup')
+})
+
 router.post('/', async (req, res)=> {
     const {username, password} = req.body;
 

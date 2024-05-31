@@ -53,33 +53,36 @@ const Header = ({ cartCount, toggleCart }) => {
 
   return (
     <header>
-      <div className='w-100 font-semibold flex flex-col justify-center items-center pr-20 pl-20'>
-        <img src={logo} alt="Logo" className='size-30' />
-        <div className='flex flex-row justify-center items-center gap-3'>
-          <nav>
-            <ul className='flex flex-row'>
-              <li className='mx-2'><Link to="/">{t('header.title')}</Link></li>
-              <li className='mx-2'><Link to="/nosotros">{t('header.about')}</Link></li>
-              <li className='mx-2'><Link to="/contacto">{t('header.contact')}</Link></li>
-            </ul>
-          </nav>
-          <div className='relative'>
-            <button onClick={toggleCart}>
-              <FiShoppingCart className='size-5' />
-            </button>
-            {/* <span className='font-light'>0</span> */}
-          </div>
+     <div className='w-100 font-semibold flex flex-col justify-center items-center pr-20 pl-20'>
+  <img src={logo} alt="Logo" className='size-30' />
+  <div className='flex flex-row justify-center items-center gap-3'>
+    <nav className='flex flex-row gap-3'>
+      <ul className='flex flex-row'>
+        <li className='mx-2'><Link to="/">{t('header.title')}</Link></li>
+        <li className='mx-2'><Link to="/nosotros">{t('header.about')}</Link></li>
+        <li className='mx-2'><Link to="/contacto">{t('header.contact')}</Link></li>
+      </ul>
 
-          <div className='relative' onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-            <FaRegUser className='size-5' />
-            {showDropdown && <UserDropdown isVisible={showDropdown} /> }
-          </div>
-
-          <div>
-            <LanguageSelector />
-          </div>
-        </div>
+        <div className='relative'>
+          <button onClick={toggleCart}>
+            <FiShoppingCart className='size-5' />
+          </button>
+        {/* <span className='font-light'>0</span> */}
       </div>
+
+      <div className='relative' onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+        <FaRegUser className='size-5' />
+        {showDropdown && <UserDropdown isVisible={showDropdown} /> }
+      </div>
+    </nav>
+
+   
+
+    <div>
+      <LanguageSelector />
+    </div>
+  </div>
+</div>
 
       <div className='w-100 bg-black mt-3'>
         <div className='flex flex-row justify-center text-white'>
