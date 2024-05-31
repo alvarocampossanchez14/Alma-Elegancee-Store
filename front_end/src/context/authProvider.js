@@ -14,7 +14,7 @@ export function AuthProvider({ children }) {
         cart: [] 
     };
 
-    const API_URL = process.env.API_URL || 'http://localhost:3100'
+    const API_URL = process.env.API_URL 
 
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [user, setUser] = useState(() => {

@@ -16,9 +16,7 @@ async function connect() {
 
 connect().catch(console.error)
 
-app.use(cors({
-    origin: 'https://alma-elegancee-store.vercel.app/'
-}));
+app.use(cors());
 app.use(express.json());
 
 
