@@ -10,11 +10,9 @@
         "price": "Preu",
         "filtersName": {
             "all": "Tots",
-            "tshirt": "Samarretes",
-            "backpack": "Motxilles",
-            "mug": "Tasses",
-            "slides": "Xancletes",
-            "phoneCase": "Fundes de mòbil"
+            "camisetas": "Samarretes",
+            "pantalones": "Pantalons",
+            "camisas": "Camises"
         }
     },
 

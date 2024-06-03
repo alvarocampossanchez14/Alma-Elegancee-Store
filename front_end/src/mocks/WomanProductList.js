@@ -1,101 +1,97 @@
+const images = require.context('../assets/woman', true, /\.png$/)
+
+
+
 export const products = [
    {
-     src: "https://vangogh.teespring.com/v3/image/wYtlEYUh0mBVL4uM4R2Ot3k91cM/800/800.jpg",
+     src: images('./camiseta_verde_mujer.png'),
      description: {
       "es": "Camiseta de mujer clásica",
       "ca": "Samarreta de dona clàsica"
      },
      name: {
-      "es": "Camiseta PintaAPIs",
-      "ca": "Samarreta PintaAPIs"
+      "es": "Camiseta verde",
+      "ca": "Camiseta verda"
      },
-     category: "t-shirt",
+     category: "camisetas",
      price: 45,
      id: 1,
    },
+
    {
-     src: "https://vangogh.teespring.com/v3/image/CQqPCGhpYSWeIhhuIhrYszYlF80/800/800.jpg",
+     src:  images('./camiseta_azul_mujer.png'),
      description: {
-      "es": "Mochila de escolar de 10L",
-      "ca": "Motxilla d'escola de 10L"
+      "es": "Camisa verde",
+      "ca": "Camisa verde"
      },
      name: {
-      "es": "Mochila Escolar",
-      "ca": "Motxilla Escolar"
+      "es": "Camisa verde",
+      "ca": "Camisa verde"
      },
-     category: "backpack",
+     category: "camisas",
      price: 20,
      id: 2,
    },
+
    {
-     src: "https://vangogh.teespring.com/v3/image/r-RYEtI-3Za9uY_fFenKjvljmPo/800/800.jpg",
+     src: images('./camisa_negra_mujer.png'),
      description: {
-      "es": "Taza de cerámica",
-      "ca": "Tassa de ceràmica"
+      "es": "Camisa negra",
+      "ca": "Camisa negra"
      },
      name: {
-      "es": "Taza PintaAPIs",
-      "ca": "Tassa PintaAPIs"
+      "es": "Camisa negra",
+      "ca": "Camisa negra"
      },
-     category: "mug",
+     category: "camisas",
      price: 15,
      id: 3,
    },
+
    {
-     src: "https://vangogh.teespring.com/v3/image/2X44KlxuntV6i7We7ncksGQUhmM/800/800.jpg",
+     src: images('./camisa_verde_mujer.png'),
      description: {
-      "es": "Sandalias de playa blancas",
-      "ca": "Sandàlies de playa blanques"
+      "es": "Camisetas hombre blanca",
+      "ca": "Camisetas hombre blanca"
      },
      name: {
-      "es": "Chanclas blancas",
-      "ca": "Sandàlies blanques"  
+      "es": "Camisetas hombre blanca",
+      "ca": "Camisetas hombre blanca"  
      },
-     category: "slides",
-     price: 5,
+     category: "camisetas",
+     price: 25,
      id: 4,
    },
+
    {
-     src: "https://vangogh.teespring.com/v3/image/VkdWeXMYyCRo5hThna-v5pdh5rE/800/800.jpg",
+     src: images('./pantalones_azul_mujer.png'),
      description: {
-      "es": "Sandalias de playa negras",
-      "ca": "Sandàlies de playa negres"
+      "es": "Pantalones chinos",
+      "ca": "Pantalones chinos"
      },
      name: {
-      "es": "Chanclas negras",
-      "ca": "Sandàlies negres"  
+      "es": "Pantalones chinos",
+      "ca": "Pantalones chinos"  
      },
-     category: "slides",
+     category: "pantalones",
      price: 23,
      id: 5,
    },
+
    {
-     src: "https://vangogh.teespring.com/v3/image/D2dQ70NxuRlIqGqXbu2RbKilJLo/800/800.jpg",
+     src: images('./pantalones_mujer_verde.png'),
      description: {
-      "es": "Funda de iPhone 12 negra",
-      "ca": "Funda d'iPhone 12 negra"
+      "es": "Pantalones de lino",
+      "ca": "Pantalones de lino"
      },
      name: {
-      "es": "Funda de iPhone 12",
-      "ca": "Funda d'iPhone 12"
+      "es": "Pantalones de lino",
+      "ca": "Pantalones de lino"
      },
-     category: "phone case",
+     category: "pantalones",
      price: 18,
      id: 6,
  
    },
-   {
-     src: "https://vangogh.teespring.com/v3/image/7clI8kE4gBd-Dqq4VoDlFsuIs9s/800/800.jpg",
-     description: {
-      "es": "Taza de cerámica",
-      "ca": "Tassa de ceràmica"
-     },
-     name: {
-      "es": "Taza PintaAPIs",
-      "ca": "Tassa PintaAPIs"
-     },
-     category: "mug",
-     price: 12,
-     id: 7,
-   },
+
  ];

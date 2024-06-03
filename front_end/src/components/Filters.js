@@ -45,11 +45,9 @@ export function Filters({setFilters}) {
                 <option value="all">{t('filters.filtersName.all')}</option>
                 <select id={categoryFilterId} onChange={handleChangeCategory} className='bg-transparent border-2 border-black rounded-md p-1 m-0'>
                     <option value="all">{t('filters.filtersName.all')}</option>
-                    <option value="t-shirt">{t('filters.filtersName.tshirt')}</option>
-                    <option value="backpack">{t('filters.filtersName.backpack')}</option>
-                    <option value="mug">{t('filters.filtersName.mug')}</option>
-                    <option value="slides">{t('filters.filtersName.slides')}</option>
-                    <option value="phone case">{t('filters.filtersName.phoneCase')}</option>
+                    <option value="camisetas">{t('filters.filtersName.camisetas')}</option>
+                    <option value="camisas">{t('filters.filtersName.camisas')}</option>
+                    <option value="pantalones">{t('filters.filtersName.pantalones')}</option>
                 </select>
             </div>
         </section>

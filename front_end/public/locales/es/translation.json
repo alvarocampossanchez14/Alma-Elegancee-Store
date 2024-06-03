@@ -11,11 +11,9 @@
         "price": "Precio",
         "filtersName": {
             "all": "Todos",
-            "tshirt": "Camisetas",
-            "backpack": "Mochilas",
-            "mug": "Tazas",
-            "slides": "Chanclas",
-            "phoneCase": "Fundas de móvil"
+            "camisetas": "Camisetas",
+            "pantalones": "Pantalones",
+            "camisas": "Camisas"
         }
     },
 
