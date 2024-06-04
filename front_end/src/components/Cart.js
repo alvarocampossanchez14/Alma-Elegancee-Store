@@ -47,7 +47,7 @@ const Cart = ({toggleCart}) => {
 
     const {cart, clearCart, calculateTotal} = useCart()    
     return (
-        <aside className="cart bg-white border-2  fixed right-0 top-0 w-[25rem] h-full p-0 py-10 overflow-y-scroll">
+        <aside className="cart bg-white border-2  fixed right-0 top-0 w-[25rem] h-full p-0 py-10 overflow-y-scroll z-20">
             <div className="cart-content flex flex-col items-center justify-center">
 
                 <button className="fixed top-4 right-5" onClick={toggleCart}>

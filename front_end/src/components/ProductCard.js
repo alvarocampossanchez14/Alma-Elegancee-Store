@@ -15,7 +15,7 @@ const ProductCard = ({product}) => {
     const isProductInCart = checkProductInCart(product) 
 
     return (
-        <div className="product-card bg-[#FAFAFA] border-l-black flex flex-col border-b-black border-2 xl:w-80 md:w-80 lg:w-80 p-5 rounded-md relative z-[-2]">
+        <div className="product-card bg-[#FAFAFA] border-l-black flex flex-col border-b-black border-2 xl:w-80 md:w-80 lg:w-80 p-5 rounded-md relative z-10">
             <div className="product-card__image flex justify-center">
                 <img src={product.src} alt="Product" className="rounded-md" />
             </div>
