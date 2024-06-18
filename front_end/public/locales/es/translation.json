@@ -34,6 +34,18 @@
         "thirstParagraph": "Nuestra tienda no solo se enfoca en la calidad de los productos, sino también en brindar una experiencia de compra excepcional. Valoramos a nuestros clientes y nos esforzamos por ofrecer un servicio personalizado, atendiendo tus inquietudes y necesidades con prontitud y dedicación."
     },
 
+    "contact": {
+        "title": "¡ Contacta con nosotros !",
+        "name_label": "Nombre",
+        "email_label": "Correo electrónico",
+        "message_label": "Mensaje",
+        "send": "Enviar",
+        "support": "Soporte Técnico",
+        "postVenta": "Preguntas post-venta",
+        "errorReport": "Reportar un error"
+
+    },
+
     "footer": {
         "title": "Tienda creada en España",
         "copyright": "Todos los derechos reservados"

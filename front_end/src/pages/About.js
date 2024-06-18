@@ -33,9 +33,9 @@ const About =  () => {
                         <img src={BannerIMG} alt={t('about.bannerAltText')} loading="lazy" className="w-4/6 h-100 rounded-md saturate-0 z-[-2]" />
                         <div className="text_about my-10 mx-10 xl:mx-60">
                             <div className="flex flex-col gap-7 my-7 font-light text-center">
-                                <p className="">{t('about.firstParagraph')}</p>
-                                <p>{t('about.secondParagraph')}</p>
-                                <p>{t('about.thirstParagraph')}</p>
+                                <p className="text-neutral-500">{t('about.firstParagraph')}</p>
+                                <p className="text-neutral-500">{t('about.secondParagraph')}</p>
+                                <p className="text-neutral-500">{t('about.thirstParagraph')}</p>
                             </div>
                         </div>
                     </div>

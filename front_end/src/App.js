@@ -14,7 +14,7 @@ const Login = lazy(() => import('./pages/Login'));
 // Componentes
 import Header from './components/Header';
 import Footer  from './components/Footer';
-import Products from './components/Products';
+import Contact from './pages/Contact';
 import Cart from './components/Cart';
 import { Filters } from "./components/Filters";
 import CategorySelector from './components/CategorySelector';
@@ -74,8 +74,8 @@ const App = () => {
                     <Route path="/isLogin" element={<LoginRedirect />} />
                     <Route path="/coleccion/hombre" element={<ProductsMan />}/>
                     <Route path="/coleccion/mujer" element={<ProductsWoman />}/>
-                    <Route path="/contacto" element={<Enlace />}  />
                     <Route path="/nosotros" element={<About />}  />
+                    <Route path="/contacto" element={<Contact />} />  
                   </Routes>
                   </Suspense>
                   {cartOpen && <Cart toggleCart={toggleCart}/>}
@@ -110,7 +110,7 @@ const HeaderManager = ({toggleCart}) => {
   const [showHeader, setShowHeader] = useState(false)
 
   useEffect(()=> {
-    if(location.pathname === "/contacto") {
+    if(location.pathname === "/test") {
       setShowHeader(false)
   } else {
     setShowHeader(true)
